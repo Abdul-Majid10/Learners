@@ -29,15 +29,15 @@ import wasif.fyp.smartrestaurant.Tabs.BeautyCategoryFragment;
 
 public class IntroLocationActivity extends AppCompatActivity {
     private LinearLayout location;
-    GPSTracker gpsTracker;
+    private GPSTracker gpsTracker;
 
     public static final String PREF_USERNAME = "username";
     public static final String PREF_USERID = "id";
     public static final String PREF_ORDERID = "orderid";
     public static final String PREF_PHONE = "zone";
-    SharedPreferences mSharedPreferences;
-    ProgressBar progressBar;
-    EditText Password;
+    private SharedPreferences mSharedPreferences;
+    private ProgressBar progressBar;
+    private EditText Password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,8 @@ public class IntroLocationActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress);
         Password = findViewById(R.id.password);
 
-        mSharedPreferences = getSharedPreferences(SignInActivity.PREFERENCE, Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences(SignInActivity.PREFERENCE,
+                Context.MODE_PRIVATE);
 //        Name.setText("Sarim Khan");
 //        Numbner.setText("03211234567");
         location.setOnClickListener(new View.OnClickListener() {
@@ -164,7 +165,7 @@ public class IntroLocationActivity extends AppCompatActivity {
             return firstName;
         }
 
-        public void setFirstName(String firstName) {
+        public void setFirstName(final String firstName) {
             this.firstName = firstName;
         }
 
@@ -223,16 +224,20 @@ public class IntroLocationActivity extends AppCompatActivity {
                     finish();
 
                 } else {
-                    Toast.makeText(IntroLocationActivity.this, "Something went wrong Please Try Again!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IntroLocationActivity.this,
+                            "Something went wrong Please Try Again!",
+                            Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
-            public void onFailure(@NonNull Call<BeautyCategoryFragment.CreateOrderModel> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<BeautyCategoryFragment.CreateOrderModel> call,
+                                  @NonNull Throwable t) {
 
-                Toast.makeText(IntroLocationActivity.this, "Internet Issue try Again!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(IntroLocationActivity.this, "Internet Issue try Again!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
