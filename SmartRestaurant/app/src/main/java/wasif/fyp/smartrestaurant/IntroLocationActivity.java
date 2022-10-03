@@ -27,7 +27,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import wasif.fyp.smartrestaurant.Tabs.BeautyCategoryFragment;
 
-public class IntroLocationActivity extends AppCompatActivity {
+public class IntroLocationActivity extends AppCompatActivity { //NOPMD - suppressed AtLeastOneConstructor - TODO explain reason for suppression
     private LinearLayout location;
     private GPSTracker gpsTracker;
 
@@ -35,9 +35,9 @@ public class IntroLocationActivity extends AppCompatActivity {
     public static final String PREF_USERID = "id";
     public static final String PREF_ORDERID = "orderid";
     public static final String PREF_PHONE = "zone";
-    private SharedPreferences mSharedPreferences;
+    private SharedPreferences mSharedPreferences; //NOPMD - suppressed LongVariable - TODO explain reason for suppression
     private ProgressBar progressBar;
-    private EditText Password;
+    private EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class IntroLocationActivity extends AppCompatActivity {
         final EditText Name = findViewById(R.id.name);
         final EditText Numbner = findViewById(R.id.no);
         progressBar = findViewById(R.id.progress);
-        Password = findViewById(R.id.password);
+        password = findViewById(R.id.password);
 
         mSharedPreferences = getSharedPreferences(SignInActivity.PREFERENCE,
                 Context.MODE_PRIVATE);
@@ -70,7 +70,7 @@ public class IntroLocationActivity extends AppCompatActivity {
                             .baseUrl(getResources().getString(R.string.URL))
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
-                    RequestBody pass = RequestBody.create(MediaType.parse("text/plain"), Name.getText().toString());
+                    RequestBody pass = RequestBody.create(MediaType.parse("text/plain"), Name.getText().toString()); //NOPMD - suppressed AvoidDuplicateLiterals - TODO explain reason for suppression
                     RequestBody adre = RequestBody.create(MediaType.parse("text/plain"), Numbner.getText().toString());
                     RequestBody id_res = RequestBody.create(MediaType.parse("text/plain"), "1");
 
@@ -113,7 +113,7 @@ public class IntroLocationActivity extends AppCompatActivity {
         });
     }
 
-    public class LoginModel {
+    public class LoginModel { //NOPMD - suppressed AtLeastOneConstructor - TODO explain reason for suppression
 
         @SerializedName("error")
         @Expose
